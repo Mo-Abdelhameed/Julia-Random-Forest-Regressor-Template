@@ -10,7 +10,7 @@ The following is the directory structure of the project:
   - **`/inputs/`**: This directory contains all the input files for this project, including the `data` and `schema` files. The `data` is further divided into `testing` and `training` subsets.
   - **`/model/artifacts/`**: This directory is used to store the model artifacts, such as trained models and their parameters.
   - **`/outputs/`**: The outputs directory contains sub-directory for prediction results.
-- **`src/`**: This directory holds the source code for the project. It is further divided into various subdirectories:
+- **`src/`**: This directory holds the source code for the project.
 
   - **`train.ipynb`**: This script is used to train the model. It loads the data, preprocesses it, trains the model, and saves the artifacts in the path `./model_inputs_outputs/model/artifacts/`.
   - **`predict.ipynb`**: This script is used to run batch predictions using the trained model. It loads the artifacts and creates and saves the predictions in a file called `predictions.csv` in the path `./model_inputs_outputs/outputs/predictions/`.
@@ -39,6 +39,21 @@ In this section we cover the following:
 ### To run locally (without Docker)
 
 - Create your virtual environment and install dependencies listed in `Project.toml`.
+
+You can do this by navigating to the project directory from the terminal and executing the following commands:
+
+```bash
+julia --project
+```
+
+This will open up julia's command-line (REPL) where you can execute the following commands:
+
+```bash
+using Pkg
+Pkg.activate(".")
+Pkg.instantiate()
+```
+
 - Run the script `src/train.ipynb` to train the Random Forest model. This will save the model artifacts, including the preprocessing pipeline and label encoder, in the path `./model_inputs_outputs/model/artifacts/`.
 - Run the script `src/predict.ipynb` to run batch predictions using the trained model. This script will load the artifacts and create and save the predictions in a file called `predictions.csv` in the path `./model_inputs_outputs/outputs/predictions/`.
 
